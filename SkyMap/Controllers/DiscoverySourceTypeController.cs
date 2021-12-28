@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SkyMap.Data;
 using SkyMap.Entities;
+using SkyMap.Interfaces;
 
 namespace SkyMap.Controllers;
 
@@ -9,17 +8,17 @@ namespace SkyMap.Controllers;
 [Route("api/[controller]")]
 public class DiscoverySourceTypeController : ControllerBase
 {
-    private readonly DataContext _dataContext;
+    private readonly IDiscoverySourceTypeRepository _discoverySourceTypeRepository;
 
-    public DiscoverySourceTypeController(DataContext dataContext)
+    public DiscoverySourceTypeController(IDiscoverySourceTypeRepository discoverySourceTypeRepository)
     {
-        _dataContext = dataContext;
+        _discoverySourceTypeRepository = discoverySourceTypeRepository;
     }
 
     [HttpPost("add/{name}")]
     public async Task<ActionResult<DiscoverySourceType>> AddDiscoverySourceType(string name)
     {
-        var allTypes = _dataContext.DiscoverySourceTypes.ToList();
+        var allTypes = await _discoverySourceTypeRepository.GetDiscoverySourceTypes();
 
         var existingType = allTypes.FirstOrDefault(t => t.Name == name);
         if (existingType != null)
@@ -27,20 +26,15 @@ public class DiscoverySourceTypeController : ControllerBase
             return BadRequest("This type is already inserted");
         }
 
-        DiscoverySourceType discoverySourceType = new();
-        discoverySourceType.Id = Guid.NewGuid();
-        discoverySourceType.Name = name;
-        
-        await _dataContext.DiscoverySourceTypes.AddAsync(discoverySourceType);
-        await _dataContext.SaveChangesAsync();
+        var newType = await _discoverySourceTypeRepository.AddDiscoverySourceType(name);
 
-        return Ok(discoverySourceType);
+        return Ok(newType);
     }
 
     [HttpGet("types")]
     public async Task<ActionResult<List<DiscoverySourceType>>> GetDiscoverySourceTypes()
     {
-        var allTypes = await _dataContext.DiscoverySourceTypes.ToListAsync();
+        var allTypes = await _discoverySourceTypeRepository.GetDiscoverySourceTypes();
 
         return Ok(allTypes);
     }
@@ -48,7 +42,7 @@ public class DiscoverySourceTypeController : ControllerBase
     [HttpGet("type/{id}")]
     public async Task<ActionResult<DiscoverySourceType>> GetDiscoverySourceType(string id)
     {
-        var type = await _dataContext.DiscoverySourceTypes.FindAsync(Guid.Parse(id));
+        var type = await _discoverySourceTypeRepository.GetDiscoverySourceType(Guid.Parse(id));
 
         if (type == null)
         {

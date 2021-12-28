@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SkyMap.Data;
+using SkyMap.Interfaces;
+using SkyMap.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,9 @@ builder.Services.AddCors(opt =>
             AllowCredentials().WithOrigins("http://localhost:4200");
     });
 });
+
+builder.Services.AddTransient<IDiscoverySourceTypeRepository, DiscoverySourceTypeRepository>();
+builder.Services.AddTransient<ICelestialObjectTypeRepository, CelestialObjectTypeRepository>();
 
 builder.Services.AddDbContext<DataContext>(opt =>
 {

@@ -1,4 +1,5 @@
-﻿using SkyMap.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SkyMap.Data;
 using SkyMap.Entities;
 using SkyMap.Interfaces;
 
@@ -13,25 +14,40 @@ namespace SkyMap.Repositories
             _dataContext = dataContext;
         }
 
-        public Task<DiscoverySourceType> AddDiscoverySourceType(string name)
+        public async Task<DiscoverySourceType> AddDiscoverySourceType(string name)
         {
-            throw new NotImplementedException();
+            DiscoverySourceType type = new();
+            type.Id = Guid.NewGuid();
+            type.Name = name;
+
+            await _dataContext.DiscoverySourceTypes.AddAsync(type);
+            await _dataContext.SaveChangesAsync();
+            return type;
         }
 
-        public async Task<DiscoverySourceType> GetDiscoverySourceType(Guid id)
+        public async Task<DiscoverySourceType?> GetDiscoverySourceType(Guid id)
         {
             var type = await _dataContext.DiscoverySourceTypes.FindAsync(id);
             return type;
         }
 
-        public Task<List<DiscoverySourceType>> GetDiscoverySourceTypes()
+        public async Task<List<DiscoverySourceType>> GetDiscoverySourceTypes()
         {
-            throw new NotImplementedException();
+            var types = await _dataContext.DiscoverySourceTypes.ToListAsync();
+            return types;
         }
 
-        public Task<bool> RemoveDiscoverySourceType(Guid id)
+        public async Task<bool> RemoveDiscoverySourceType(Guid id)
         {
-            throw new NotImplementedException();
+            var type = await _dataContext.DiscoverySourceTypes.FindAsync(id);
+            if (type == null)
+            {
+                return false;
+            }
+
+            _dataContext.DiscoverySourceTypes.Remove(type);
+            await _dataContext.SaveChangesAsync();
+            return true;
         }
     }
 }
