@@ -1,8 +1,27 @@
+using Microsoft.EntityFrameworkCore;
+using SkyMap.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod()
+            .AllowCredentials().WithOrigins("https://localhost:4200");
+        policy.AllowAnyHeader().AllowAnyMethod().
+            AllowCredentials().WithOrigins("http://localhost:4200");
+    });
+});
+
+builder.Services.AddDbContext<DataContext>(opt =>
+{
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 
@@ -17,12 +36,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors("CorsPolicy");
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
-;
 
 app.Run();
