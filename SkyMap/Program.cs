@@ -1,7 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SkyMap.Data;
-using SkyMap.Interfaces;
-using SkyMap.Repositories;
+using SkyMap.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,15 +17,12 @@ builder.Services.AddCors(opt =>
     });
 });
 
-builder.Services.AddTransient<IDiscoverySourceTypeRepository, DiscoverySourceTypeRepository>();
-builder.Services.AddTransient<ICelestialObjectTypeRepository, CelestialObjectTypeRepository>();
-
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.AddAplicationServices();
 
 var app = builder.Build();
+
+// Seeding and migrating the database
+ApplicationServiceExtensions.MigrateAndSeedDatabase(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

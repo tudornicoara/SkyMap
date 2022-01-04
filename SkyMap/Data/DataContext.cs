@@ -9,8 +9,9 @@ public class DataContext : DbContext
     {
     }
 
-    public DbSet<DiscoverySourceType> DiscoverySourceTypes { get; set; }
-    public DbSet<DiscoverySource> DiscoverySources { get; set; }
-    public DbSet<CelestialObjectType> CelestialObjectTypes { get; set; }
-    public DbSet<CelestialObject> CelestialObjects { get; set; }
+    // = null! is just for the IDE to shut up about non-nullable properties
+    public DbSet<DiscoverySourceType> DiscoverySourceTypes { get; set; } = null!;
+    public DbSet<DiscoverySource> DiscoverySources { get; set; } = null!;
+    public DbSet<CelestialObjectType> CelestialObjectTypes { get; set; } = null!;
+    public DbSet<CelestialObject> CelestialObjects { get; set; } = null!;
 }
