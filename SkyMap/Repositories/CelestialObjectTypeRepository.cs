@@ -16,9 +16,11 @@ public class CelestialObjectTypeRepository : ICelestialObjectTypeRepository
     
     public async Task<CelestialObjectType> AddCelestialObjectType(string name)
     {
-        CelestialObjectType type = new();
-        type.Id = Guid.NewGuid();
-        type.Name = name;
+        CelestialObjectType type = new()
+        {
+            Id = Guid.NewGuid(),
+            Name = name
+        };
 
         await _dataContext.CelestialObjectTypes.AddAsync(type);
         await _dataContext.SaveChangesAsync();

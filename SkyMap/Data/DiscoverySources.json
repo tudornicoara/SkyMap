@@ -1,0 +1,65 @@
+[
+  {
+    "Id": "40dfde56-693c-460a-8d82-edcf0e7f45cd",
+    "Name": "Hubble 1",
+    "EstablishmentDate": "1994-04-25",
+    "DiscoverySourceTypeId": "a22fbd20-30ec-4a0d-beaf-f2870f53c760",
+    "StateOwner": "USA"
+  },
+  {
+    "Id": "6ddec944-ee38-450f-828a-75ebabc2fa5c",
+    "Name": "Arecibo Observatory",
+    "EstablishmentDate": "1960-06-01",
+    "DiscoverySourceTypeId": "cd4b1f86-62cb-4f84-81fd-5de0dee4d524",
+    "StateOwner": "Puerto Rico"
+  },
+  {
+    "Id": "feaba53a-568a-4f3d-8c8b-4b8bfb9d96aa",
+    "Name": "Pulkovo Observatory",
+    "EstablishmentDate": "1839-08-07",
+    "DiscoverySourceTypeId": "cd4b1f86-62cb-4f84-81fd-5de0dee4d524",
+    "StateOwner": "Russia"
+  },
+  {
+    "Id": "e1b1a024-b6cc-4f6d-8597-4cfb5aab314a",
+    "Name": "NEOSSat",
+    "EstablishmentDate": "2013-02-25",
+    "DiscoverySourceTypeId": "a22fbd20-30ec-4a0d-beaf-f2870f53c760",
+    "StateOwner": "Canada"
+  },
+  {
+    "Id": "bfaa371f-db84-43ce-b577-eca4fca8c5f2",
+    "Name": "Astrosat",
+    "EstablishmentDate": "2015-09-28",
+    "DiscoverySourceTypeId": "a22fbd20-30ec-4a0d-beaf-f2870f53c760",
+    "StateOwner": "India"
+  },
+  {
+    "Id": "34e02156-ed7a-44b9-95e9-8c9f10544568",
+    "Name": "Spektr-R",
+    "EstablishmentDate": "2011-07-18",
+    "DiscoverySourceTypeId": "a22fbd20-30ec-4a0d-beaf-f2870f53c760",
+    "StateOwner": "Russia"
+  },
+  {
+    "Id": "cc58499c-1362-4b8c-9703-20edc51e730a",
+    "Name": "Subaru Telescope",
+    "EstablishmentDate": "2011-07-18",
+    "DiscoverySourceTypeId": "cd4b1f86-62cb-4f84-81fd-5de0dee4d524",
+    "StateOwner": "Japan"
+  },
+  {
+    "Id": "221917d0-68e9-4273-9530-e6876f46ccbe",
+    "Name": "ALMA",
+    "EstablishmentDate": "2011-06-15",
+    "DiscoverySourceTypeId": "cd4b1f86-62cb-4f84-81fd-5de0dee4d524",
+    "StateOwner": "Chile"
+  },
+  {
+    "Id": "a7a775e3-4caf-4d0c-9115-4e1664c8ecce",
+    "Name": "Keck",
+    "EstablishmentDate": "1993-11-24",
+    "DiscoverySourceTypeId": "cd4b1f86-62cb-4f84-81fd-5de0dee4d524",
+    "StateOwner": "USA"
+  }
+]

@@ -16,9 +16,11 @@ namespace SkyMap.Repositories
 
         public async Task<DiscoverySourceType> AddDiscoverySourceType(string name)
         {
-            DiscoverySourceType type = new();
-            type.Id = Guid.NewGuid();
-            type.Name = name;
+            DiscoverySourceType type = new()
+            {
+                Id = Guid.NewGuid(),
+                Name = name
+            };
 
             await _dataContext.DiscoverySourceTypes.AddAsync(type);
             await _dataContext.SaveChangesAsync();
@@ -28,6 +30,14 @@ namespace SkyMap.Repositories
         public async Task<DiscoverySourceType?> GetDiscoverySourceType(Guid id)
         {
             var type = await _dataContext.DiscoverySourceTypes.FindAsync(id);
+            return type;
+        }
+
+        public async Task<DiscoverySourceType?> GetDiscoverySourceTypeByName(string name)
+        {
+            var type = await _dataContext.DiscoverySourceTypes
+                .FirstOrDefaultAsync(t => t.Name == name);
+
             return type;
         }
 

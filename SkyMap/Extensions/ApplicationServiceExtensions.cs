@@ -11,30 +11,29 @@ public static class ApplicationServiceExtensions
     {
         builder.Services.AddTransient<IDiscoverySourceTypeRepository, DiscoverySourceTypeRepository>();
         builder.Services.AddTransient<ICelestialObjectTypeRepository, CelestialObjectTypeRepository>();
+        builder.Services.AddTransient<IDiscoverySourceRepository, DiscoverySourceRepository>();
         builder.Services.AddDbContext<DataContext>(opt =>
         {
-            opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+            opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty);
         });
     }
     
-    public static async void MigrateAndSeedDatabase(IServiceProvider serviceProvider)
+    public static async Task MigrateAndSeedDatabase(IServiceProvider serviceProvider)
     {
-        using (var scope = serviceProvider.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+        using var scope = serviceProvider.CreateScope();
+        var services = scope.ServiceProvider;
+        var loggerFactory = services.GetRequiredService<ILoggerFactory>();
 
-            try
-            {
-                var context = services.GetRequiredService<DataContext>();
-                await context.Database.MigrateAsync();
-                // Seed method will go here
-            }
-            catch (Exception e)
-            {
-                var logger = loggerFactory.CreateLogger<Program>();
-                logger.LogError(e, "An error occured during migration");
-            }
+        try
+        {
+            var context = services.GetRequiredService<DataContext>();
+            await context.Database.MigrateAsync();
+            await Seed.SeedData(context);
+        }
+        catch (Exception e)
+        {
+            var logger = loggerFactory.CreateLogger<Program>();
+            logger.LogError(e, "An error occured during migration");
         }
     }
 }

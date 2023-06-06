@@ -15,15 +15,13 @@ public class DiscoverySourceTypeController : ControllerBase
         _discoverySourceTypeRepository = discoverySourceTypeRepository;
     }
 
-    [HttpPost("add/{name}")]
+    [HttpPost("{name}")]
     public async Task<ActionResult<DiscoverySourceType>> AddDiscoverySourceType(string name)
     {
-        var allTypes = await _discoverySourceTypeRepository.GetDiscoverySourceTypes();
-
-        var existingType = allTypes.FirstOrDefault(t => t.Name == name);
+        var existingType = await _discoverySourceTypeRepository.GetDiscoverySourceTypeByName(name);
         if (existingType != null)
         {
-            return BadRequest("This type is already inserted");
+            return BadRequest("This type name has already been used");
         }
 
         var newType = await _discoverySourceTypeRepository.AddDiscoverySourceType(name);
@@ -31,7 +29,7 @@ public class DiscoverySourceTypeController : ControllerBase
         return Ok(newType);
     }
 
-    [HttpGet("types")]
+    [HttpGet]
     public async Task<ActionResult<List<DiscoverySourceType>>> GetDiscoverySourceTypes()
     {
         var allTypes = await _discoverySourceTypeRepository.GetDiscoverySourceTypes();
@@ -39,7 +37,7 @@ public class DiscoverySourceTypeController : ControllerBase
         return Ok(allTypes);
     }
 
-    [HttpGet("type/{id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<DiscoverySourceType>> GetDiscoverySourceType(string id)
     {
         var type = await _discoverySourceTypeRepository.GetDiscoverySourceType(Guid.Parse(id));

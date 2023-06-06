@@ -1,0 +1,82 @@
+[
+  {
+    "Name": "Kepler-37b",
+    "Mass": "5.97237e24",
+    "EquatorialDiameter": "12756200",
+    "SurfaceTemperature": "5800",
+    "DiscoveryDate": "2018-12-15",
+    "DiscoverySourceId": "40dfde56-693c-460a-8d82-edcf0e7f45cd"
+  },
+  {
+    "Name": "X1 NGC 4889",
+    "Mass": "4.2e40",
+    "EquatorialDiameter": "4280000",
+    "SurfaceTemperature": "2000",
+    "DiscoveryDate": "2019-03-10",
+    "DiscoverySourceId": "a7a775e3-4caf-4d0c-9115-4e1664c8ecce"
+  },
+  {
+    "Name": "V538 Carinae",
+    "Mass": "3.65e29",
+    "EquatorialDiameter": "184502000",
+    "SurfaceTemperature": "4800",
+    "DiscoveryDate": "2010-01-25",
+    "DiscoverySourceId": "34e02156-ed7a-44b9-95e9-8c9f10544568"
+  },
+  {
+    "Name": "Z0 B1257+12",
+    "Mass": "2.91e28",
+    "EquatorialDiameter": "55000000",
+    "SurfaceTemperature": "1600",
+    "DiscoveryDate": "2020-05-30",
+    "DiscoverySourceId": "cc58499c-1362-4b8c-9703-20edc51e730a"
+  },
+  {
+    "Name": "X1 Messier 87",
+    "Mass": "1.3e40",
+    "EquatorialDiameter": "11600000",
+    "SurfaceTemperature": "2000",
+    "DiscoveryDate": "2017-12-10",
+    "DiscoverySourceId": "40dfde56-693c-460a-8d82-edcf0e7f45cd"
+  },
+  {
+    "Name": "OGLE-2005-BLG-390Lb",
+    "Mass": "3.17237e25",
+    "EquatorialDiameter": "21557978",
+    "SurfaceTemperature": "200",
+    "DiscoveryDate": "2005-08-10",
+    "DiscoverySourceId": "6ddec944-ee38-450f-828a-75ebabc2fa5c"
+  },
+  {
+    "Name": "HIP 11915 b",
+    "Mass": "1.87532418e27",
+    "EquatorialDiameter": "14010000",
+    "SurfaceTemperature": "300",
+    "DiscoveryDate": "2015-12-15",
+    "DiscoverySourceId": "feaba53a-568a-4f3d-8c8b-4b8bfb9d96aa"
+  },
+  {
+    "Name": "VY Canis Majoris",
+    "Mass": "3.4164e28",
+    "EquatorialDiameter": "9.94e8",
+    "SurfaceTemperature": "3500",
+    "DiscoveryDate": "2014-12-19",
+    "DiscoverySourceId": "e1b1a024-b6cc-4f6d-8597-4cfb5aab314a"
+  },
+  {
+    "Name": "Z0 CVSO 30",
+    "Mass": "1.2e30",
+    "EquatorialDiameter": "90000000",
+    "SurfaceTemperature": "1000",
+    "DiscoveryDate": "2016-04-05",
+    "DiscoverySourceId": "bfaa371f-db84-43ce-b577-eca4fca8c5f2"
+  },
+  {
+    "Name": "V774 Sagittarii",
+    "Mass": "7.634e31",
+    "EquatorialDiameter": "1.6710622e10",
+    "SurfaceTemperature": "5800",
+    "DiscoveryDate": "2012-07-13",
+    "DiscoverySourceId": "221917d0-68e9-4273-9530-e6876f46ccbe"
+  }
+]

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SkyMap.Entities;
 using SkyMap.Interfaces;
-using SkyMap.Repositories;
 
 namespace SkyMap.Controllers;
 
@@ -16,7 +15,7 @@ public class CelestialObjectTypeController : ControllerBase
         _celestialObjectTypeRepository = celestialObjectTypeRepository;
     }
 
-    [HttpPost("add/{name}")]
+    [HttpPost("{name}")]
     public async Task<ActionResult<CelestialObjectType>> AddCelestialObjectType(string name)
     {
         var allTypes = await _celestialObjectTypeRepository.GetCelestialObjectTypes();
@@ -24,7 +23,7 @@ public class CelestialObjectTypeController : ControllerBase
         var existingType = allTypes.FirstOrDefault(t => t.Name == name);
         if (existingType != null)
         {
-            return BadRequest("This type is already inserted");
+            return BadRequest("This type name has already been used");
         }
 
         var newType = await _celestialObjectTypeRepository.AddCelestialObjectType(name);
@@ -32,7 +31,7 @@ public class CelestialObjectTypeController : ControllerBase
         return Ok(newType);
     }
 
-    [HttpGet("types")]
+    [HttpGet]
     public async Task<ActionResult<List<CelestialObjectType>>> GetCelestialObjectTypes()
     {
         var allTypes = await _celestialObjectTypeRepository.GetCelestialObjectTypes();
@@ -40,7 +39,7 @@ public class CelestialObjectTypeController : ControllerBase
         return Ok(allTypes);
     }
 
-    [HttpGet("type/{id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<CelestialObjectType>> GetCelestialObjectType(string id)
     {
         var type = await _celestialObjectTypeRepository.GetCelestialObjectType(Guid.Parse(id));

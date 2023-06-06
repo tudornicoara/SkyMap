@@ -1,16 +1,23 @@
-﻿namespace SkyMap.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class CelestialObject
+namespace SkyMap.DTOs;
+
+public class CelestialObjectDto
 {
-    public Guid Id { get; set; }
+    [Required]
     public string? Mass { get; set; }
+    
+    [Required]
     public string? EquatorialDiameter { get; set; }
+    
+    [Required]
     public string? SurfaceTemperature { get; set; }
+    
+    [Required]
     public DateTime DiscoveryDate { get; set; }
-
+    
+    [Required]
     public Guid DiscoverySourceId { get; set; }
-    public DiscoverySource? DiscoverySource { get; set; }
-
+    
     public Guid? CelestialObjectTypeId { get; set; }
-    public CelestialObjectType? Type { get; set; }
 }
