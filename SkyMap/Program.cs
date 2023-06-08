@@ -14,6 +14,10 @@ builder.Services.AddCors(opt =>
             .AllowCredentials().WithOrigins("https://localhost:5173");
         policy.AllowAnyHeader().AllowAnyMethod().
             AllowCredentials().WithOrigins("http://localhost:5173");
+        policy.AllowAnyHeader().AllowAnyMethod()
+            .AllowCredentials().WithOrigins("https://127.0.0.1:5173");
+        policy.AllowAnyHeader().AllowAnyMethod().
+            AllowCredentials().WithOrigins("http://127.0.0.1:5173");
     });
 });
 
@@ -22,7 +26,7 @@ builder.AddAplicationServices();
 var app = builder.Build();
 
 // Seeding and migrating the database
-ApplicationServiceExtensions.MigrateAndSeedDatabase(app.Services);
+await ApplicationServiceExtensions.MigrateAndSeedDatabase(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

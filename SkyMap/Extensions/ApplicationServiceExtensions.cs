@@ -12,6 +12,7 @@ public static class ApplicationServiceExtensions
         builder.Services.AddTransient<IDiscoverySourceTypeRepository, DiscoverySourceTypeRepository>();
         builder.Services.AddTransient<ICelestialObjectTypeRepository, CelestialObjectTypeRepository>();
         builder.Services.AddTransient<IDiscoverySourceRepository, DiscoverySourceRepository>();
+        builder.Services.AddTransient<ICelestialObjectRepository, CelestialObjectRepository>();
         builder.Services.AddDbContext<DataContext>(opt =>
         {
             opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty);

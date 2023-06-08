@@ -5,6 +5,9 @@ namespace SkyMap.DTOs;
 public class CelestialObjectDto
 {
     [Required]
+    public string? Name { get; set; }
+    
+    [Required]
     public string? Mass { get; set; }
     
     [Required]
@@ -17,7 +20,7 @@ public class CelestialObjectDto
     public DateTime DiscoveryDate { get; set; }
     
     [Required]
-    public Guid DiscoverySourceId { get; set; }
+    public string? DiscoverySourceId { get; set; }
     
-    public Guid? CelestialObjectTypeId { get; set; }
+    public string? CelestialObjectTypeId { get; set; }
 }

@@ -3,6 +3,8 @@
 public class CelestialObject
 {
     public Guid Id { get; set; }
+
+    public string? Name { get; set; }
     public string? Mass { get; set; }
     public string? EquatorialDiameter { get; set; }
     public string? SurfaceTemperature { get; set; }

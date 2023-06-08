@@ -46,19 +46,24 @@ public class DiscoverySourceRepository : IDiscoverySourceRepository
 
     public async Task<List<DiscoverySource>> GetDiscoverySources()
     {
-        var discoverySources = await _dataContext.DiscoverySources.ToListAsync();
+        var discoverySources = await _dataContext.DiscoverySources
+            .Include(x => x.Type)
+            .ToListAsync();
         return discoverySources;
     }
 
     public async Task<DiscoverySource?> GetDiscoverySource(Guid id)
     {
-        var discoverySource = await _dataContext.DiscoverySources.FindAsync(id);
+        var discoverySource = await _dataContext.DiscoverySources
+            .Include(x => x.Type)
+            .FirstOrDefaultAsync(x => x.Id == id);
         return discoverySource;
     }
 
     public async Task<DiscoverySource?> GetDiscoverySourceByName(string name)
     {
         var discoverySource = await _dataContext.DiscoverySources
+            .Include(x => x.Type)
             .FirstOrDefaultAsync(d => d.Name == name);
 
         return discoverySource;

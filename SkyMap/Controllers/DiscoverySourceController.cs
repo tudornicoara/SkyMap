@@ -38,7 +38,7 @@ public class DiscoverySourceController : ControllerBase
         }
 
         var discoverySourceType = await _discoverySourceTypeRepository
-                .GetDiscoverySourceType(Guid.Parse(discoverySourceDto.DiscoverySourceTypeId));
+                .GetDiscoverySourceType(Guid.Parse(discoverySourceDto.DiscoverySourceTypeId!));
 
         if (discoverySourceType == null)
         {

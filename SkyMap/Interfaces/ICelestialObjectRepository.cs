@@ -9,4 +9,6 @@ public interface ICelestialObjectRepository
     public Task<bool> RemoveCelestialObject(Guid id);
     public Task<List<CelestialObject>> GetCelestialObjects();
     public Task<CelestialObject?> GetCelestialObject(Guid id);
+    
+    public Task<CelestialObject?> GetCelestialObjectByName(string name);
 }

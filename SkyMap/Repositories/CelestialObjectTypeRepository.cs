@@ -51,4 +51,10 @@ public class CelestialObjectTypeRepository : ICelestialObjectTypeRepository
         var type = await _dataContext.CelestialObjectTypes.FindAsync(id);
         return type;
     }
+
+    public async Task<CelestialObjectType?> GetCelestialObjectTypeByName(string name)
+    {
+        var type = await _dataContext.CelestialObjectTypes.FirstOrDefaultAsync(t => t.Name == name);
+        return type;
+    }
 }

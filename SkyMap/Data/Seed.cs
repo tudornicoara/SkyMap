@@ -44,6 +44,11 @@ public static class Seed
                 {
                     Id = new Guid("afb9714f-90f3-44ce-bf5d-03d422bc1f75"),
                     Name = "Black hole"
+                },
+                new()
+                {
+                    Id = new Guid("df161a5c-b7df-49b0-80a0-5f06237b1456"),
+                    Name = "Unknown"
                 }
             };
 

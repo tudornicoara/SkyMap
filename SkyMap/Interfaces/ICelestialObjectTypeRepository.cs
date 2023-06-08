@@ -8,5 +8,6 @@ namespace SkyMap.Interfaces
         public Task<bool> RemoveCelestialObjectType(Guid id);
         public Task<List<CelestialObjectType>> GetCelestialObjectTypes();
         public Task<CelestialObjectType?> GetCelestialObjectType(Guid id);
+        public Task<CelestialObjectType?> GetCelestialObjectTypeByName(string name);
     }
 }
