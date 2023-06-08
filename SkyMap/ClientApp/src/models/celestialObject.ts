@@ -1,4 +1,4 @@
-export interface DiscoverySource {
+export interface CelestialObject {
     id: string;
     name: string;
     mass: string;

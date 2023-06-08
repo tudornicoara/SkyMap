@@ -49,4 +49,18 @@ public class DiscoverySourceTypeController : ControllerBase
 
         return Ok(type);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> RemoveDiscoverySourceType(string id)
+    {
+        var type = await _discoverySourceTypeRepository.GetDiscoverySourceType(Guid.Parse(id));
+        
+        if (type == null)
+        {
+            return NotFound();
+        }
+
+        await _discoverySourceTypeRepository.RemoveDiscoverySourceType(Guid.Parse(id));
+        return Ok();
+    }
 }

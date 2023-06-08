@@ -21,8 +21,6 @@ U
 %SkyMap/Properties/launchSettings.json,6\b\6bba312c70651904f1c5cd497623e9fd60bda412
 S
 #SkyMap/ClientApp/tsconfig.node.json,3\c\3c9439426ca4222a147f0a8f045671234b4a2804
-c
-3SkyMap/Controllers/CelestialObjectTypeController.cs,d\2\d2196d67b05f7c436e4d64f4cc8b4becce94ccc1
 O
 SkyMap/ClientApp/vite.config.ts,0\1\01139c25728df2609e2cb735c48660f7fecd8c9c
 Q
@@ -39,8 +37,6 @@ Q
 !SkyMap/DTOs/DiscoverySourceDto.cs,c\2\c21122286a0f28a5688a589c61337c705dc6e9b0
 y
 ISkyMap/Data/Migrations/20230606095323_AddedSurfaceTemperature.Designer.cs,e\0\e083e54e570fa48f81ec9c92520be37389c6605a
-c
-3SkyMap/Controllers/DiscoverySourceTypeController.cs,6\6\660a95566b696c37e886cf5102286155b39c1521
 p
 @SkyMap/Data/Migrations/20230606095323_AddedSurfaceTemperature.cs,5\f\5fe0e1db6c4128298411875bf4942eec6eb25a8f
 d

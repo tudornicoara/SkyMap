@@ -93,4 +93,18 @@ public class CelestialObjectController : ControllerBase
 
         return Ok(celestialObject);
     }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<CelestialObject>> RemoveCelestialObject(string id)
+    {
+        var celestialObject = await _celestialObjectRepository.GetCelestialObject(Guid.Parse(id));
+
+        if (celestialObject == null)
+        {
+            return NotFound();
+        }
+
+        await _celestialObjectRepository.RemoveCelestialObject(Guid.Parse(id));
+        return Ok();
+    }
 }

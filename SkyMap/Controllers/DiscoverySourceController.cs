@@ -69,4 +69,18 @@ public class DiscoverySourceController : ControllerBase
 
         return Ok(source);
     }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<DiscoverySource>> RemoveDiscoverySource(string id)
+    {
+        var source = await _discoverySourceRepository.GetDiscoverySource(Guid.Parse(id));
+
+        if (source == null)
+        {
+            return NotFound();
+        }
+
+        await _discoverySourceRepository.RemoveDiscoverySource(Guid.Parse(id));
+        return Ok();
+    }
 }
